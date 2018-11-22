@@ -3,7 +3,7 @@ $(document).ready(function(){
         ItemListHeight = Body.heght - navplayer.heght - ItemListTitle.height - Searcher.hegit - ItemList.height
     */
     var heightProgramList = $(window).height()-$("#nav-player").outerHeight()-$("#ItemListTitle").outerHeight()-$("#Searcher").outerHeight()-$("#ItemList").outerHeight();
-    $("#ProgramList").height(heightProgramList-40);
+    $("#ProgramList").height(heightProgramList-53);
     
     // begin 初次加载节目数据 
     isLoadLatestItem = true;
@@ -27,6 +27,12 @@ $(document).ready(function(){
 
     function getSwtyItemsData(valuesDate){
         var server = 'http://api.swtychina.com/api/values?';
+
+        // 删除原有节目
+        deleteProgramList("ProgramList");
+
+        // 控制spinner是否显示
+        toggleLoadingControls(true);
         $.ajax({
             url: server + valuesDate,
             type: 'GET',
@@ -34,10 +40,9 @@ $(document).ready(function(){
             timeout: 10000,
             error: function(data){
                 alert('加载数据失败，再次点击试试~？');
+                toggleLoadingControls(false);
             },
-            success: function(data){
-                // 删除原有节目
-                deleteProgramList("ProgramList");
+            success: function(data){                
                 var parent = document.getElementById("ProgramList");
                 var auditonUrl = "http://swtychina.com/gb/audiodoc";
                 $.each(data, function(index, val) {
@@ -82,6 +87,7 @@ $(document).ready(function(){
                 evenNumber = 0; 
                 isLoadLatestItem = false;
                 //console.log("Allitem:",allItem);
+                toggleLoadingControls(false);
             }
         });
         

@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
+  <!-- <link rel="stylesheet" href="./CSS/bootstrap-cosmo.min.css">  -->
   <link rel="stylesheet" href="./CSS/manvel.css"> 
   <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -14,7 +15,33 @@
     <div class="container mccBorder"> 
         <div class="row" >
             <div class="col-sm-4">                
-                <h4 class="mccTitle">归档节目</h4>                
+                <h4 class="mccTitle">归档节目</h4> 
+                <!-- begin 选择年份  -->
+                <div class="mcc-current-year">
+                    <strong><span>选择节目年份：</span></strong>
+                    <div class="btn-group">
+                        <button id="currentyear" type="button" class="btn btn-primary">2018年</button>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                            <span class="sr-only">切换下拉菜单</span>
+                        </button>
+                        <ul id="allyear" class="dropdown-menu" role="menu">
+                            <li><a id="otheryear">2007年</a></li>
+                            <li><a id="otheryear">2008年</a></li>
+                            <li><a id="otheryear">2009年</a></li>
+                            <li><a id="otheryear">2010年</a></li>
+                            <li><a id="otheryear">2011年</a></li>
+                            <li><a id="otheryear">2012年</a></li>
+                            <li><a id="otheryear">2013年</a></li>
+                            <li><a id="otheryear">2014年</a></li>
+                            <li><a id="otheryear">2015年</a></li>
+                            <li><a id="otheryear">2016年</a></li>
+                            <li><a id="otheryear">2017年</a></li>
+                            <li><a id="otheryear">2018年</a></li>
+                        </ul>
+                    </div>
+                </div> 
+                <!-- end 选择年份  -->           
                 <div class="panel-group" id="accordion">
                     <div class="panel panel-default">
                         <div class="panel-heading mccPanelHeading">
@@ -74,7 +101,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-8 mcc-item-list">
                 <h4 class="mccTitle" id="ItemList">节目列表</h4>
                 <div class="row " id="Searcher">
                     <form class="form-horizontal" role="form">
@@ -91,8 +118,30 @@
                     <div class="col-sm-1 col-xs-3" style="padding-left:2px;"><strong>收听</strong></div>
                     <div class="col-sm-1 col-xs-3" style="padding-left:2px;"><strong>下载</strong></div>
                     <div class="col-sm-5 col-xs-12 text-center"><strong>内容摘要</strong></div>                    
+                </div>               
+                <div class="row item-title-hr"> <hr style="margin-bottom:5px;margin-top:2px;" /></div>
+                <!-- @* 加载节目动画 begin *@ -->
+                <div class="spinner">
+                    <div class="spinner-container container1">
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
+                        <div class="circle3"></div>
+                        <div class="circle4"></div>
+                    </div>
+                    <div class="spinner-container container2">
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
+                        <div class="circle3"></div>
+                        <div class="circle4"></div>
+                    </div>
+                    <div class="spinner-container container3">
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
+                        <div class="circle3"></div>
+                        <div class="circle4"></div>
+                    </div>
                 </div>
-                <hr style="margin-bottom:5px;margin-top:2px;"/>
+                <!-- @* 加载节目动画 end *@ -->
                 <div id="ProgramList" class="mccdiv" style="margin-left:10px;"> </div>
             </div>
         </div> 
