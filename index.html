@@ -10,7 +10,7 @@
   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="./JS/manvel.js"></script>
 </head>
-<body onload="loadLatestItem()">
+<body>
     <div class="container mccBorder"> 
         <div class="row" >
             <div class="col-sm-4">                
@@ -40,8 +40,8 @@
                                     <div class="col-sm-2 col-xs-3">
                                         <a id="201804" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-04')">201804</a>
                                     </div>                          
-                            </div>
-                            <div class="row">
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-2 col-xs-3">
                                         <a id="201805" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-05')">201805</a>
                                     </div> 
@@ -54,8 +54,8 @@
                                     <div class="col-sm-2 col-xs-3">
                                         <a id="201808" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-08')">201808</a>
                                     </div>                        
-                            </div>
-                            <div class="row">
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-2 col-xs-3">
                                         <a id="201809" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-09')">201809</a>
                                     </div> 
@@ -68,21 +68,15 @@
                                     <div class="col-sm-2 col-xs-3">
                                         <a id="201812" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-12')">201812</a>
                                     </div>                        
-                            </div>   
+                                </div>   
                             </div>
                         </div>
                     </div>
-                    
                 </div>
-                <script type="text/javascript">
-                    
-                </script>  
-
             </div>
-
             <div class="col-sm-8">
-                <h4 class="mccTitle">节目列表</h4>
-                <div class="row ">
+                <h4 class="mccTitle" id="ItemList">节目列表</h4>
+                <div class="row " id="Searcher">
                     <form class="form-horizontal" role="form">
                         <div class="form-group">                            
                             <div class="col-sm-5 col-xs-8" style="margin-left:20px;">
@@ -92,8 +86,7 @@
                         </div>
                     </form>                 
                 </div>
-                
-                <div class="row" style="margin-left:0px;">
+                <div class="row" style="margin-left:0px;" id="ItemListTitle">
                     <div class="col-sm-2 col-xs-6"><strong>节目时间</strong></div>
                     <div class="col-sm-1 col-xs-3" style="padding-left:2px;"><strong>收听</strong></div>
                     <div class="col-sm-1 col-xs-3" style="padding-left:2px;"><strong>下载</strong></div>
@@ -102,23 +95,18 @@
                 <hr style="margin-bottom:5px;margin-top:2px;"/>
                 <div id="ProgramList" class="mccdiv" style="margin-left:10px;"> </div>
             </div>
-            <script type="text/javascript">
-                var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-                document.write(unescape("%3Cspan id='cnzz_stat_icon_1271925150'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1271925150%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
-            </script>  
-        </div>
-
-        <nav class="navbar navbar-default navbar-fixed-bottom mccPlayerbackground">
-            <div class="container">
-                <div id="audio_container" class="">
-                    <div>
-                        <audio id="player" data-id="0" data-order="forward" style="width:100%;margin-top:10px;" controls="" src=""></audio>
-                    </div>                
-                    <p id="player_title" style="color:#ffffff;" >当前节目的内容摘要 </p>  
-                                  
-                </div>
-            </div>
-        </nav>        
+        </div> 
     </div> 
+    <nav class="navbar navbar-default navbar-fixed-bottom mccPlayerbackground" id="nav-player">
+        <div class="container">
+            <div id="audio_container" class="">
+                <div>
+                    <audio id="player" data-id="0" data-order="forward" style="width:100%;margin-top:10px;" controls="" src=""></audio>
+                </div>                
+                <p id="player_title" style="color:#ffffff;" >当前节目的内容摘要 </p>  
+                              
+            </div>
+        </div>
+    </nav> 
 </body>
 </html>
