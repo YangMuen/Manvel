@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>满福华人教会</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
+  <link rel="stylesheet" href="./CSS/manvel.css"> 
+  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="./JS/manvel.js"></script>
+</head>
+<body onload="loadLatestItem()">
+    <div class="container mccBorder"> 
+        <div class="row" >
+            <div class="col-sm-4">                
+                <h4 class="mccTitle">归档节目</h4>                
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading mccPanelHeading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" 
+                                   href="#collapse2018" class="mccYear">
+                                    2018年
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse2018" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="row" >
+                                    <div class="col-sm-2 col-xs-3" >
+                                        <a id="201801" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-01')">201801</a>
+                                    </div>  
+                                    <div class="col-sm-2 col-xs-3">                            
+                                        <a id="201802" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-02')">201802</a>
+                                    </div>
+                                    <div class="col-sm-2 col-xs-3">
+                                        <a id="201803" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-03')">201803</a>
+                                    </div>
+                                    <div class="col-sm-2 col-xs-3">
+                                        <a id="201804" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-04')">201804</a>
+                                    </div>                          
+                            </div>
+                            <div class="row">
+                                    <div class="col-sm-2 col-xs-3">
+                                        <a id="201805" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-05')">201805</a>
+                                    </div> 
+                                    <div class="col-sm-2 col-xs-3">
+                                        <a id="201806" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-06')">201806</a>
+                                    </div>  
+                                    <div class="col-sm-2 col-xs-3">
+                                        <a id="201807" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-07')">201807</a>
+                                    </div>
+                                    <div class="col-sm-2 col-xs-3">
+                                        <a id="201808" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-08')">201808</a>
+                                    </div>                        
+                            </div>
+                            <div class="row">
+                                    <div class="col-sm-2 col-xs-3">
+                                        <a id="201809" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-09')">201809</a>
+                                    </div> 
+                                    <div class="col-sm-2 col-xs-3">
+                                        <a id="201810" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-10')">201810</a>
+                                    </div>  
+                                    <div class="col-sm-2 col-xs-3">
+                                        <a id="201811" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-11')">201811</a>
+                                    </div>
+                                    <div class="col-sm-2 col-xs-3">
+                                        <a id="201812" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-12')">201812</a>
+                                    </div>                        
+                            </div>   
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <script type="text/javascript">
+                    
+                </script>  
+
+            </div>
+
+            <div class="col-sm-8">
+                <h4 class="mccTitle">节目列表</h4>
+                <div class="row ">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">                            
+                            <div class="col-sm-5 col-xs-8" style="margin-left:20px;">
+                                <input type="text" class="form-control" id="itemname" placeholder="请输入搜索的节目">
+                            </div>
+                            <p class="col-sm-1 col-xs-2 btn btn-primary" onclick="searchItem()">搜索</p>
+                        </div>
+                    </form>                 
+                </div>
+                
+                <div class="row" style="margin-left:0px;">
+                    <div class="col-sm-2 col-xs-6"><strong>节目时间</strong></div>
+                    <div class="col-sm-1 col-xs-3" style="padding-left:2px;"><strong>收听</strong></div>
+                    <div class="col-sm-1 col-xs-3" style="padding-left:2px;"><strong>下载</strong></div>
+                    <div class="col-sm-5 col-xs-12 text-center"><strong>内容摘要</strong></div>                    
+                </div>
+                <hr style="margin-bottom:5px;margin-top:2px;"/>
+                <div id="ProgramList" class="mccdiv" style="margin-left:10px;"> </div>
+            </div>
+            <script type="text/javascript">
+                var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                document.write(unescape("%3Cspan id='cnzz_stat_icon_1271925150'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1271925150%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
+            </script>  
+        </div>
+
+        <nav class="navbar navbar-default navbar-fixed-bottom mccPlayerbackground">
+            <div class="container">
+                <div id="audio_container" class="">
+                    <div>
+                        <audio id="player" data-id="0" data-order="forward" style="width:100%;margin-top:10px;" controls="" src=""></audio>
+                    </div>                
+                    <p id="player_title" style="color:#ffffff;" >当前节目的内容摘要 </p>  
+                                  
+                </div>
+            </div>
+        </nav>        
+    </div> 
+</body>
+</html>
