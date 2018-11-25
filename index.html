@@ -20,24 +20,12 @@
                 <div class="mcc-current-year">
                     <strong><span>选择节目年份：</span></strong>
                     <div class="btn-group">
-                        <button id="currentyear" type="button" class="btn btn-primary">2018年</button>
+                        <button id="currentyear" type="button" class="btn btn-primary"></button>
                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>
                             <span class="sr-only">切换下拉菜单</span>
                         </button>
-                        <ul id="allyear" class="dropdown-menu" role="menu">
-                            <li><a id="otheryear">2007年</a></li>
-                            <li><a id="otheryear">2008年</a></li>
-                            <li><a id="otheryear">2009年</a></li>
-                            <li><a id="otheryear">2010年</a></li>
-                            <li><a id="otheryear">2011年</a></li>
-                            <li><a id="otheryear">2012年</a></li>
-                            <li><a id="otheryear">2013年</a></li>
-                            <li><a id="otheryear">2014年</a></li>
-                            <li><a id="otheryear">2015年</a></li>
-                            <li><a id="otheryear">2016年</a></li>
-                            <li><a id="otheryear">2017年</a></li>
-                            <li><a id="otheryear">2018年</a></li>
+                        <ul id="allyear" class="dropdown-menu" role="menu">                           
                         </ul>
                     </div>
                 </div> 
@@ -47,56 +35,54 @@
                         <div class="panel-heading mccPanelHeading">
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" 
-                                   href="#collapse2018" class="mccYear">
+                                   href="#collapseyear" class="mccYear">
                                     2018年
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapse2018" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <div class="row" >
-                                    <div class="col-sm-2 col-xs-3" >
-                                        <a id="201801" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-01')">201801</a>
-                                    </div>  
-                                    <div class="col-sm-2 col-xs-3">                            
-                                        <a id="201802" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-02')">201802</a>
-                                    </div>
-                                    <div class="col-sm-2 col-xs-3">
-                                        <a id="201803" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-03')">201803</a>
-                                    </div>
-                                    <div class="col-sm-2 col-xs-3">
-                                        <a id="201804" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-04')">201804</a>
-                                    </div>                          
+                        <div id="collapseyear" class="mcc-monthlist">                           
+                            <div class="row" >
+                                <div class="col-sm-3 col-xs-3 " >
+                                    <a id="1" href="javascript:void(0)" class="mccMonth"></a>
+                                </div>  
+                                <div class="col-sm-3 col-xs-3">                            
+                                    <a id="2" href="javascript:void(0)" class="mccMonth"></a>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-2 col-xs-3">
-                                        <a id="201805" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-05')">201805</a>
-                                    </div> 
-                                    <div class="col-sm-2 col-xs-3">
-                                        <a id="201806" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-06')">201806</a>
-                                    </div>  
-                                    <div class="col-sm-2 col-xs-3">
-                                        <a id="201807" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-07')">201807</a>
-                                    </div>
-                                    <div class="col-sm-2 col-xs-3">
-                                        <a id="201808" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-08')">201808</a>
-                                    </div>                        
+                                <div class="col-sm-3 col-xs-3">
+                                    <a id="3" href="javascript:void(0)" class="mccMonth"></a>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-2 col-xs-3">
-                                        <a id="201809" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-09')">201809</a>
-                                    </div> 
-                                    <div class="col-sm-2 col-xs-3">
-                                        <a id="201810" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-10')">201810</a>
-                                    </div>  
-                                    <div class="col-sm-2 col-xs-3">
-                                        <a id="201811" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-11')">201811</a>
-                                    </div>
-                                    <div class="col-sm-2 col-xs-3">
-                                        <a id="201812" href="#" class="mccMonth" onclick="getSwtyItemsData('date=2018-12')">201812</a>
-                                    </div>                        
-                                </div>   
+                                <div class="col-sm-3 col-xs-3">
+                                    <a id="4" href="javascript:void(0)" class="mccMonth"></a>
+                                </div>                          
                             </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-3">
+                                    <a id="5" href="javascript:void(0)" class="mccMonth"></a>
+                                </div> 
+                                <div class="col-sm-3 col-xs-3">
+                                    <a id="6" href="javascript:void(0)" class="mccMonth"></a>
+                                </div>  
+                                <div class="col-sm-3 col-xs-3">
+                                    <a id="7" href="javascript:void(0)" class="mccMonth"></a>
+                                </div>
+                                <div class="col-sm-3 col-xs-3">
+                                    <a id="8" href="javascript:void(0)" class="mccMonth"></a>
+                                </div>                        
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-3">
+                                    <a id="9" href="javascript:void(0)" class="mccMonth"></a>
+                                </div> 
+                                <div class="col-sm-3 col-xs-3">
+                                    <a id="10" href="javascript:void(0)" class="mccMonth"></a>
+                                </div>  
+                                <div class="col-sm-3 col-xs-3">
+                                    <a id="11" href="javascript:void(0)" class="mccMonth"></a>
+                                </div>
+                                <div class="col-sm-3 col-xs-3">
+                                    <a id="12" href="javascript:void(0)" class="mccMonth"></a>
+                                </div>                        
+                            </div>                            
                         </div>
                     </div>
                 </div>

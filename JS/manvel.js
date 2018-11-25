@@ -2,6 +2,7 @@ $(document).ready(function(){
     /* 设置节目列表高度
         ItemListHeight = Body.heght - navplayer.heght - ItemListTitle.height - Searcher.hegit - ItemList.height
     */
+   InitAllYear();
    InitItemListHeight();
    $(window).resize(function () {
         InitItemListHeight();
@@ -15,6 +16,48 @@ $(document).ready(function(){
     function InitItemListHeight(){
         var heightProgramList = $(window).height()-$("#nav-player").outerHeight()-$("#ItemListTitle").outerHeight()-$("#Searcher").outerHeight()-$("#ItemList").outerHeight();
         $("#ProgramList").height(heightProgramList-53);
+    }
+
+    // 为年份列表注册 鼠标点击事件
+    $("#allyear > li").click(function(){
+        // 设置为当前点击年份
+        var currentyear = this.value + "年";
+        $("#currentyear").text(currentyear);
+        // 更新月份列表
+        InitAllMonth(this.value);
+    });
+
+    // 为月份注册点击事件
+    $(".mccMonth").click(function(){
+        
+    });
+    // 初始化节目年份下拉菜单，月份列表从2007年开始到现在
+    function InitAllYear(){        
+        // 设置当前年份
+        var nowYear = new Date().getFullYear();
+        $("#currentyear").text( nowYear + "年");
+        // 更新月份列表
+        InitAllMonth(nowYear);
+        // 获取父亲
+        var ulObj = $("#allyear");
+        for(var i=2007;i<=nowYear;i++){
+            ulObj.append("<li value=" + i +"><a>" + i +"年</a></li>");
+        }
+    }
+
+    // 更新月份列表
+    function InitAllMonth(currentyear){
+        // 获取 id 为 collapseyear 的标签下的所有 a标签
+        //$("#collapseyear").find("a.mccMonth").text(currentyear);
+        var aObjs = $("#collapseyear").find("a.mccMonth");
+        for(var i = 1; i <= 12; i++)
+        {
+            var strTemp = currentyear + "0" + i;
+            if(i >= 10){strTemp = currentyear + "" + i;}
+            aObjs[i-1].text = strTemp;
+        }
+        //console.log(aObjs);
+        
     }
 });
 
