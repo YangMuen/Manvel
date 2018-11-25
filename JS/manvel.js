@@ -2,13 +2,20 @@ $(document).ready(function(){
     /* 设置节目列表高度
         ItemListHeight = Body.heght - navplayer.heght - ItemListTitle.height - Searcher.hegit - ItemList.height
     */
-    var heightProgramList = $(window).height()-$("#nav-player").outerHeight()-$("#ItemListTitle").outerHeight()-$("#Searcher").outerHeight()-$("#ItemList").outerHeight();
-    $("#ProgramList").height(heightProgramList-53);
+   InitItemListHeight();
+   $(window).resize(function () {
+        InitItemListHeight();
+    });
     
     // begin 初次加载节目数据 
     isLoadLatestItem = true;
     getSwtyItemsData();
     // end 初次加载节目数据
+
+    function InitItemListHeight(){
+        var heightProgramList = $(window).height()-$("#nav-player").outerHeight()-$("#ItemListTitle").outerHeight()-$("#Searcher").outerHeight()-$("#ItemList").outerHeight();
+        $("#ProgramList").height(heightProgramList-53);
+    }
 });
 
     var imgurl = "http://www.swtychina.com/gb/images/download16.gif"; 
