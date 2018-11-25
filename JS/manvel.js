@@ -29,7 +29,10 @@ $(document).ready(function(){
 
     // 为月份注册点击事件
     $(".mccMonth").click(function(){
-        
+        // 2018-1
+        var yearmonth = this.text;
+        console.log(yearmonth.substring(0,4) + "-" + yearmonth.substring(4,6));
+        getSwtyItemsData("date="+yearmonth.substring(0,4) + "-" + yearmonth.substring(4,6));
     });
     // 初始化节目年份下拉菜单，月份列表从2007年开始到现在
     function InitAllYear(){        
