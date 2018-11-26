@@ -14,8 +14,8 @@ $(document).ready(function(){
     // end 初次加载节目数据
 
     function InitItemListHeight(){
-        var heightProgramList = $(window).height()-$("#nav-player").outerHeight()-$("#ItemListTitle").outerHeight()-$("#Searcher").outerHeight()-$("#ItemList").outerHeight();
-        $("#ProgramList").height(heightProgramList-53);
+        var heightProgramList = $(window).height()-$(".audio-box").outerHeight()-$("#ItemListTitle").outerHeight()-$("#Searcher").outerHeight()-$("#ItemList").outerHeight();
+        $("#ProgramList").height(heightProgramList-83);
     }
 
     // 为年份列表注册 鼠标点击事件
@@ -29,7 +29,7 @@ $(document).ready(function(){
 
     // 为月份注册点击事件
     $(".mccMonth").click(function(){
-        // 2018-1
+        // "date=2018-01"
         var yearmonth = this.text;
         console.log(yearmonth.substring(0,4) + "-" + yearmonth.substring(4,6));
         getSwtyItemsData("date="+yearmonth.substring(0,4) + "-" + yearmonth.substring(4,6));
@@ -43,7 +43,7 @@ $(document).ready(function(){
         InitAllMonth(nowYear);
         // 获取父亲
         var ulObj = $("#allyear");
-        for(var i=2007;i<=nowYear;i++){
+        for(var i=2018;i<=nowYear;i++){
             ulObj.append("<li value=" + i +"><a>" + i +"年</a></li>");
         }
     }
@@ -53,7 +53,9 @@ $(document).ready(function(){
         // 获取 id 为 collapseyear 的标签下的所有 a标签
         //$("#collapseyear").find("a.mccMonth").text(currentyear);
         var aObjs = $("#collapseyear").find("a.mccMonth");
-        for(var i = 1; i <= 12; i++)
+        var currentMonth = new Date().getMonth();
+        console.log(currentMonth);
+        for(var i = 1; i <= currentMonth+1; i++)
         {
             var strTemp = currentyear + "0" + i;
             if(i >= 10){strTemp = currentyear + "" + i;}

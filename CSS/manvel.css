@@ -15,7 +15,7 @@ body{
 }
 .mccBorder {
     margin-top: 5px;
-    border: 1px solid #c8c9ca;    
+    /* border: 1px solid #c8c9ca;     */
 }
 .mccYear{
     font-size: 17px;
