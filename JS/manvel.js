@@ -31,7 +31,7 @@ $(document).ready(function(){
     $(".mccMonth").click(function(){
         // "date=2018-01"
         var yearmonth = this.text;
-        console.log(yearmonth.substring(0,4) + "-" + yearmonth.substring(4,6));
+        console.log(yearmonth.substring(0,4) + "-" + yearmonth.substring(4,6));        
         getSwtyItemsData("date="+yearmonth.substring(0,4) + "-" + yearmonth.substring(4,6));
     });
     // 初始化节目年份下拉菜单，月份列表从2007年开始到现在
@@ -69,6 +69,7 @@ $(document).ready(function(){
     var imgurl = "http://www.swtychina.com/gb/images/download16.gif"; 
     var playerImgUrl = "http://swtychina.com/gb/images/ting.gif";  
     var evenNumber = 0;  
+    var coverItem = "images/cover.jpg";
 
     // 控制播放器的显示与隐藏
     function toggleLoadingControls(loading) {
@@ -100,6 +101,13 @@ $(document).ready(function(){
             success: function(data){                
                 var parent = document.getElementById("ProgramList");
                 var auditonUrl = "http://swtychina.com/gb/audiodoc";
+
+                // 节目列表
+                var audioFn = audioPlay({
+                    song : null,
+                    autoPlay : false  //是否立即播放第一首，autoPlay为true且song为空，会alert文本提示并退出
+                });
+                //var allItems = {};
                 $.each(data, function(index, val) {
                     var year = val.date.substring(0, 4);
                     var month = year + val.date.substring(5, 7);
@@ -122,23 +130,33 @@ $(document).ready(function(){
                     // console.log("item:",item);
                     // 只显示截至到今天的，星期一和星期三的节目。
                     if (itemDate <= todayDate && (weekday==1 || weekday==3)) {
-                        if(isLoadLatestItem){                            
-                            var loadItemDate = new Date(2018,0,1);                           
-                            //var itemDate = new Date(val.date.substring(0, 4),val.date.substring(5, 7)-1,val.date.substring(8,10)); 
-                            // 只过滤掉2018年之前的节目                           
-                            if (loadItemDate <= itemDate) {
-                                //console.log("1.item:",item);
-                                loadItem(parent, item,evenNumber%2 != 0); 
-                                //console.log("2.item:",item);
-                            }
-                        }
-                        else{
+                        // if(isLoadLatestItem){                            
+                        //     var loadItemDate = new Date(2018,0,1);                           
+                        //     //var itemDate = new Date(val.date.substring(0, 4),val.date.substring(5, 7)-1,val.date.substring(8,10)); 
+                        //     // 只过滤掉2018年之前的节目                           
+                        //     if (loadItemDate <= itemDate) {
+                        //         //console.log("1.item:",item);
+                        //         loadItem(parent, item,evenNumber%2 != 0); 
+                        //         //console.log("2.item:",item);
+                        //     }
+                        // }
+                        // else{
                             loadItem(parent, item,evenNumber%2 != 0);
-                        }
+                         //}
+                        
+                         /* 向歌单中添加新曲目，第二个参数true为新增后立即播放该曲目，false则不播放 */
+                        audioFn.newSong({
+                            'cover' : coverItem,
+                            'src' : item.url,
+                            'title' : item.title
+                        },false);
+                        audioFn.stopAudio();
+                        //allItems.push({cover:coverItem,src:item.url,title:item.title})
                         evenNumber++;
                     }
                     //allItem.push(item);                            
                 }); 
+                
                 evenNumber = 0; 
                 isLoadLatestItem = false;
                 //console.log("Allitem:",allItem);
