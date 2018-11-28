@@ -124,29 +124,10 @@ $(document).ready(function(){
                     // console.log("itemDate:",itemDate);
                     // console.log("item:",item);
                     // 只显示截至到今天的，星期一和星期三的节目。
-                    if (itemDate <= todayDate && (weekday==1 || weekday==3)) {
-                        // if(isLoadLatestItem){                            
-                        //     var loadItemDate = new Date(2018,0,1);                           
-                        //     //var itemDate = new Date(val.date.substring(0, 4),val.date.substring(5, 7)-1,val.date.substring(8,10)); 
-                        //     // 只过滤掉2018年之前的节目                           
-                        //     if (loadItemDate <= itemDate) {
-                        //         //console.log("1.item:",item);
-                        //         loadItem(parent, item,evenNumber%2 != 0); 
-                        //         //console.log("2.item:",item);
-                        //     }
-                        // }
-                        // else{
-                            loadItem(parent, item,evenNumber%2 != 0);
-                         //}
+                    if (itemDate <= todayDate && (weekday==1 || weekday==3)) {                        
+                        loadItem(parent, item,evenNumber%2 != 0);
                         song.push({cover:coverItem,src:item.url,title:item.title});
-                         /* 向歌单中添加新曲目，第二个参数true为新增后立即播放该曲目，false则不播放 */
-                        // audioFn.newSong({
-                        //     'cover' : coverItem,
-                        //     'src' : item.url,
-                        //     'title' : item.title
-                        // },false);
-                        // audioFn.stopAudio();
-                        //allItems.push({cover:coverItem,src:item.url,title:item.title})
+                         
                         evenNumber++;
                     }
                     //allItem.push(item);                            
@@ -159,7 +140,7 @@ $(document).ready(function(){
                 audioFn.stopAudio();
                 evenNumber = 0; 
                 isLoadLatestItem = false;
-                //console.log("Allitem:",allItem);
+                //console.log("song:",song);
                 toggleLoadingControls(false);
             }
         });
