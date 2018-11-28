@@ -111,7 +111,7 @@
 			var song = config.song;
 			if(!song){
 
-				alert('当前歌单没有歌曲!!!');
+				//alert('当前歌单没有歌曲!!!');
 				return false;
 			}
 
@@ -222,23 +222,23 @@
 
 			return changInt(parseInt(num/60))+":"+ changInt(Math.floor(num%60));
 		}
-		
+		// 加载节目到列表
 		_this.upMenu = function(){
 
 			var song = _this.song,
-				inline = $(_this.menu.list).empty();
+				inline = $(_this.menu.list).empty();  //移除.audio-inline 中的内容
 
 			for(var i in song){
 
 				inline.append("<li><a href='javascript:;'>"+(song[i].title || '未知歌曲')+"</a></li>");
 			}
-
+			// 为所有节目注册点击事件 
 			inline.find(">li").unbind('click').on('click',function(){
-
+				// index 无参数 Query对象集合中第一个元素相对于其同辈元素的位置。
 				_this.selectMenu($(this).index(),true);
 			});
 		}
-
+		// 
 		_this.selectMenu = function(num,_bool){
 
 			songEq = num;
@@ -347,6 +347,10 @@
 				});
 			}
 		});
+		// cover.one('click',function(){
+
+		// 	_this.playAudio();
+		// });
 
 		play.one('click',function(){
 

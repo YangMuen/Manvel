@@ -1,4 +1,15 @@
 $(document).ready(function(){
+    var imgurl = "http://www.swtychina.com/gb/images/download16.gif"; 
+    var playerImgUrl = "http://swtychina.com/gb/images/ting.gif";  
+    var evenNumber = 0;  
+    var coverItem = "images/cover.jpg";
+    var song = [
+        {
+            'cover' : 'images/cover.jpg',
+            'src' : '',
+            'title' : 'sdfas'
+        }];
+
     /* 设置节目列表高度
         ItemListHeight = Body.heght - navplayer.heght - ItemListTitle.height - Searcher.hegit - ItemList.height
     */
@@ -8,6 +19,11 @@ $(document).ready(function(){
         InitItemListHeight();
     });
     
+    // 创建播放器
+    var audioFn = audioPlay({
+        song : song,
+        autoPlay : false  //是否立即播放第一首，autoPlay为true且song为空，会alert文本提示并退出
+    });
     // begin 初次加载节目数据 
     isLoadLatestItem = true;
     getSwtyItemsData();
@@ -64,12 +80,6 @@ $(document).ready(function(){
         //console.log(aObjs);
         
     }
-});
-
-    var imgurl = "http://www.swtychina.com/gb/images/download16.gif"; 
-    var playerImgUrl = "http://swtychina.com/gb/images/ting.gif";  
-    var evenNumber = 0;  
-    var coverItem = "images/cover.jpg";
 
     // 控制播放器的显示与隐藏
     function toggleLoadingControls(loading) {
@@ -98,11 +108,11 @@ $(document).ready(function(){
                 alert('加载数据失败，再次点击试试~？');
                 toggleLoadingControls(false);
             },
-            success: function(data){                
+            success: function(data){    
+                song.splice(0,song.length);            
                 var parent = document.getElementById("ProgramList");
-                var auditonUrl = "http://swtychina.com/gb/audiodoc";
+                var auditonUrl = "http://swtychina.com/gb/audiodoc";               
                 
-                var song = new Array();
                 $.each(data, function(index, val) {
                     var year = val.date.substring(0, 4);
                     var month = year + val.date.substring(5, 7);
@@ -126,17 +136,18 @@ $(document).ready(function(){
                     // 只显示截至到今天的，星期一和星期三的节目。
                     if (itemDate <= todayDate && (weekday==1 || weekday==3)) {                        
                         loadItem(parent, item,evenNumber%2 != 0);
-                        song.push({cover:coverItem,src:item.url,title:item.title});
+                        //song.push({cover:coverItem,src:item.url,title:item.title});
+                        /* 向歌单中添加新曲目，第二个参数true为新增后立即播放该曲目，false则不播放 */
+                        audioFn.newSong({
+                            'cover' : coverItem,
+                            'src' : item.url,
+                            'title' : item.title
+                        },false);
                          
                         evenNumber++;
-                    }
-                    //allItem.push(item);                            
+                    }                                               
                 }); 
-                
-                var audioFn = audioPlay({
-                    song : song,
-                    autoPlay : false  //是否立即播放第一首，autoPlay为true且song为空，会alert文本提示并退出
-                });
+                audioFn.selectMenu(0,false);
                 audioFn.stopAudio();
                 evenNumber = 0; 
                 isLoadLatestItem = false;
@@ -166,15 +177,6 @@ $(document).ready(function(){
         }
     }
 
-    function playMe(me) {
-        console.log("me:",me);
-        document.getElementById("player_title").innerHTML = me.parentNode.textContent.substring(10,me.parentNode.textContent.length);
-
-        var x = document.getElementById("player");           
-        x.setAttribute("src", me.getAttribute("playurl"));
-        x.play();
-    }
-
     function loadItem(parent,data,ishavebackgrouad) {
         // <div class="row" name="item">   //parent_div 
         //     <div class="col-sm-2 col-xs-6">2018-01-01</div>   // child_div1
@@ -201,7 +203,17 @@ $(document).ready(function(){
         var node1 = document.createTextNode(data.date);
         child_div1.appendChild(node1);
         parent_div.appendChild(child_div1);
-        // date div end
+        // date div end       
+
+        // title div begin
+        var child_div3 = document.createElement("div");                
+        child_div3.setAttribute("class","col-sm-7 col-xs-12");                
+                        
+        parent_div.appendChild(child_div3);
+
+        var node2 = document.createTextNode(data.title);
+        child_div3.appendChild(node2);
+        // title div end
 
         // player div begin
         var child_div_player = document.createElement("div");           
@@ -220,31 +232,21 @@ $(document).ready(function(){
         child_div_player_a.appendChild(child_div_player_a_img); 
         // player div end
 
-        // download div begin
-        var child_div2 = document.createElement("div");
-        child_div2.setAttribute("class","col-sm-1 col-xs-3");                
-        parent_div.appendChild(child_div2);
-
-        var child_div2_a = document.createElement("a");
-        child_div2_a.setAttribute("href",data.url);
-        child_div2_a.setAttribute("target","_blank");
-        child_div2.appendChild(child_div2_a);
-
-        var child_div2_a_img = document.createElement("img");
-        child_div2_a_img.setAttribute("src",imgurl);
-        child_div2_a_img.setAttribute("class","mccDownloadImg");
-        child_div2_a.appendChild(child_div2_a_img);
-        // download div end
-
-        // title div begin
-        var child_div3 = document.createElement("div");                
-        child_div3.setAttribute("class","col-sm-7 col-xs-12");                
-                        
-        parent_div.appendChild(child_div3);
-
-        var node2 = document.createTextNode(data.title);
-        child_div3.appendChild(node2);
-        // title div end
+         // download div begin
+         var child_div2 = document.createElement("div");
+         child_div2.setAttribute("class","col-sm-1 col-xs-3");                
+         parent_div.appendChild(child_div2);
+ 
+         var child_div2_a = document.createElement("a");
+         child_div2_a.setAttribute("href",data.url);
+         child_div2_a.setAttribute("target","_blank");
+         child_div2.appendChild(child_div2_a);
+ 
+         var child_div2_a_img = document.createElement("img");
+         child_div2_a_img.setAttribute("src",imgurl);
+         child_div2_a_img.setAttribute("class","mccDownloadImg");
+         child_div2_a.appendChild(child_div2_a_img);
+         // download div end
     }
 
     function searchItem() {
@@ -266,3 +268,6 @@ $(document).ready(function(){
 
 
     $(function () { $('#collapse2018').collapse('show')});
+});   
+
+    

@@ -24,7 +24,7 @@
                             <span class="caret"></span>
                             <span class="sr-only">切换下拉菜单</span>
                         </button>
-                        <ul id="allyear" class="dropdown-menu" role="menu">                           
+                        <ul id="allyear" class="dropdown-menu " role="menu">                           
                         </ul>
                     </div>
                 </div> 
@@ -100,9 +100,9 @@
                 </div>
                 <div class="row" style="margin-left:0px;" id="ItemListTitle">
                     <div class="col-sm-2 col-xs-6"><strong>节目时间</strong></div>
-                    <div class="col-sm-1 col-xs-3" style="padding-left:2px;"><strong>收听</strong></div>
-                    <div class="col-sm-1 col-xs-3" style="padding-left:2px;"><strong>下载</strong></div>
-                    <div class="col-sm-5 col-xs-12 text-center"><strong>内容摘要</strong></div>                    
+                    <!-- <div class="col-sm-1 col-xs-3" style="padding-left:2px;"><strong>收听</strong></div>   
+                    <div class="col-sm-1 col-xs-3" style="padding-left:2px;"><strong>下载</strong></div>-->                                      
+                    <div class="col-sm-5 col-xs-12 text-center"><strong>内容摘要</strong></div>
                 </div>               
                 <div class="row item-title-hr"> <hr style="margin-bottom:5px;margin-top:2px;" /></div>
                 <!-- @* 加载节目动画 begin *@ -->
@@ -141,7 +141,7 @@
                               
             </div>
         </div>
-    </nav>  -->
+    </nav>   -->
     <div class="audio-box">
 		<div class="audio-container">
 			<div class="audio-cover"></div>
@@ -191,6 +191,16 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="./JS/audio.js"></script>
 <script src="./JS/manvel.js"></script>
+<!-- <script>
+function playMe(me) {
+        console.log("me:",me);
+        document.getElementById("player_title").innerHTML = me.parentNode.textContent.substring(10,me.parentNode.textContent.length);
+
+        var x = document.getElementById("player");           
+        x.setAttribute("src", me.getAttribute("playurl"));
+        x.play();
+    }
+</script> -->
 <!-- 
 <script type="text/javascript">
     $(function(){
