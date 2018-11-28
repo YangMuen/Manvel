@@ -48,7 +48,7 @@ ul li{
 }
 .audio-body{
 	float: left;
-	width: calc(100% - 168px);
+	width: calc(100% - 200px);
 	height: 38px;
 	padding: 0 10px;
 }
@@ -129,6 +129,7 @@ ul li{
 	float: right;
 	width: 148px;
 	height: 38px;
+	margin-right: 10px;
 }
 .audio-select{margin-top: 12px;}
 .audio-select > div{
@@ -164,10 +165,10 @@ ul li{
 }
 .audio-list{
 	position: absolute;
-	right: 0;
+	right: 4px;
 	color: #000;
 	background-color: #fff;
-	bottom: 66px;
+	bottom: 53px;
 	border: 1px solid #ccc;
 	width: 188px;
 	border-radius: 5px 5px 0 0;
@@ -238,12 +239,13 @@ ul li{
 .audio-set-volume{
 	background-color: rgba(0,0,0,0.5);
 	position: absolute;
-	bottom: 66px;
+	bottom: 46px;
 	width: 26px;
 	height: 118px;
 	right: 0px;
 	z-index: 999;
 	display: none;
+	margin-right: 21px;
 }
 .volume-box{
 	width: 2px;

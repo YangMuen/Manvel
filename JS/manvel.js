@@ -101,13 +101,8 @@ $(document).ready(function(){
             success: function(data){                
                 var parent = document.getElementById("ProgramList");
                 var auditonUrl = "http://swtychina.com/gb/audiodoc";
-
-                // 节目列表
-                var audioFn = audioPlay({
-                    song : null,
-                    autoPlay : false  //是否立即播放第一首，autoPlay为true且song为空，会alert文本提示并退出
-                });
-                //var allItems = {};
+                
+                var song = new Array();
                 $.each(data, function(index, val) {
                     var year = val.date.substring(0, 4);
                     var month = year + val.date.substring(5, 7);
@@ -143,20 +138,25 @@ $(document).ready(function(){
                         // else{
                             loadItem(parent, item,evenNumber%2 != 0);
                          //}
-                        
+                        song.push({cover:coverItem,src:item.url,title:item.title});
                          /* 向歌单中添加新曲目，第二个参数true为新增后立即播放该曲目，false则不播放 */
-                        audioFn.newSong({
-                            'cover' : coverItem,
-                            'src' : item.url,
-                            'title' : item.title
-                        },false);
-                        audioFn.stopAudio();
+                        // audioFn.newSong({
+                        //     'cover' : coverItem,
+                        //     'src' : item.url,
+                        //     'title' : item.title
+                        // },false);
+                        // audioFn.stopAudio();
                         //allItems.push({cover:coverItem,src:item.url,title:item.title})
                         evenNumber++;
                     }
                     //allItem.push(item);                            
                 }); 
                 
+                var audioFn = audioPlay({
+                    song : song,
+                    autoPlay : false  //是否立即播放第一首，autoPlay为true且song为空，会alert文本提示并退出
+                });
+                audioFn.stopAudio();
                 evenNumber = 0; 
                 isLoadLatestItem = false;
                 //console.log("Allitem:",allItem);
