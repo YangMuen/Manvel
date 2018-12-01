@@ -5,16 +5,55 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
-  <!-- <link rel="stylesheet" href="./CSS/bootstrap-cosmo.min.css">  -->
   <link rel="stylesheet" href="./CSS/manvel.css"> 
   <link rel="stylesheet" type="text/css" href="css/audio.css">
  
 </head>
 <body>
     <div class="container mccBorder"> 
-        <div class="row" >
+        <div class="row" >            
+            <div class="col-sm-8 mcc-item-list">
+                <h4 class="mccTitle" id="ItemList">节目列表</h4>               
+                <!-- @* 加载节目动画 begin *@ -->
+                <div class="spinner">
+                    <div class="spinner-container container1">
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
+                        <div class="circle3"></div>
+                        <div class="circle4"></div>
+                    </div>
+                    <div class="spinner-container container2">
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
+                        <div class="circle3"></div>
+                        <div class="circle4"></div>
+                    </div>
+                    <div class="spinner-container container3">
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
+                        <div class="circle3"></div>
+                        <div class="circle4"></div>
+                    </div>
+                </div>
+                <!-- @* 加载节目动画 end *@ -->
+                <div id="ProgramList" class="mccdiv"> 
+                    <ul class="audio-inline">
+                        
+                    </ul>
+                </div>
+            </div>
             <div class="col-sm-4">                
                 <h4 class="mccTitle">归档节目</h4> 
+                <div class="row " id="Searcher">
+                    <form class="form-horizontal" role="form" method="post">
+                        <div class="form-group">                            
+                            <div class="col-sm-5 col-xs-8" style="margin-left:20px;">
+                                <input type="text" class="form-control" id="itemname" placeholder="请输入搜索的节目">
+                            </div>
+                             <p id="searchBtn" class="btn btn-primary">搜索</p>
+                        </div>
+                    </form>                 
+                </div>
                 <!-- begin 选择年份  -->
                 <div class="mcc-current-year">
                     <strong><span>选择节目年份：</span></strong>
@@ -39,109 +78,60 @@
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseyear" class="mcc-monthlist">                           
-                            <div class="row" >
-                                <div class="col-sm-3 col-xs-3 " >
-                                    <a id="1" href="javascript:void(0)" class="mccMonth"></a>
-                                </div>  
-                                <div class="col-sm-3 col-xs-3">                            
-                                    <a id="2" href="javascript:void(0)" class="mccMonth"></a>
+                        <!-- 月份 S -->
+                        <div id="collapseyear" class="panel-collapse collapse in">    
+                            <div class="panel-body">                       
+                                <div class="row mcc-monthlist" >
+                                    <div class="col-sm-3 col-xs-3 " >
+                                        <a id="1" href="javascript:void(0)" class="mccMonth"></a>
+                                    </div>  
+                                    <div class="col-sm-3 col-xs-3">                            
+                                        <a id="2" href="javascript:void(0)" class="mccMonth"></a>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-3">
+                                        <a id="3" href="javascript:void(0)" class="mccMonth"></a>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-3">
+                                        <a id="4" href="javascript:void(0)" class="mccMonth"></a>
+                                    </div>                          
                                 </div>
-                                <div class="col-sm-3 col-xs-3">
-                                    <a id="3" href="javascript:void(0)" class="mccMonth"></a>
+                                <div class="row mcc-monthlist">
+                                    <div class="col-sm-3 col-xs-3">
+                                        <a id="5" href="javascript:void(0)" class="mccMonth"></a>
+                                    </div> 
+                                    <div class="col-sm-3 col-xs-3">
+                                        <a id="6" href="javascript:void(0)" class="mccMonth"></a>
+                                    </div>  
+                                    <div class="col-sm-3 col-xs-3">
+                                        <a id="7" href="javascript:void(0)" class="mccMonth"></a>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-3">
+                                        <a id="8" href="javascript:void(0)" class="mccMonth"></a>
+                                    </div>                        
                                 </div>
-                                <div class="col-sm-3 col-xs-3">
-                                    <a id="4" href="javascript:void(0)" class="mccMonth"></a>
-                                </div>                          
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 col-xs-3">
-                                    <a id="5" href="javascript:void(0)" class="mccMonth"></a>
-                                </div> 
-                                <div class="col-sm-3 col-xs-3">
-                                    <a id="6" href="javascript:void(0)" class="mccMonth"></a>
-                                </div>  
-                                <div class="col-sm-3 col-xs-3">
-                                    <a id="7" href="javascript:void(0)" class="mccMonth"></a>
-                                </div>
-                                <div class="col-sm-3 col-xs-3">
-                                    <a id="8" href="javascript:void(0)" class="mccMonth"></a>
-                                </div>                        
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 col-xs-3">
-                                    <a id="9" href="javascript:void(0)" class="mccMonth"></a>
-                                </div> 
-                                <div class="col-sm-3 col-xs-3">
-                                    <a id="10" href="javascript:void(0)" class="mccMonth"></a>
-                                </div>  
-                                <div class="col-sm-3 col-xs-3">
-                                    <a id="11" href="javascript:void(0)" class="mccMonth"></a>
-                                </div>
-                                <div class="col-sm-3 col-xs-3">
-                                    <a id="12" href="javascript:void(0)" class="mccMonth"></a>
-                                </div>                        
-                            </div>                            
+                                <div class="row mcc-monthlist">
+                                    <div class="col-sm-3 col-xs-3">
+                                        <a id="9" href="javascript:void(0)" class="mccMonth"></a>
+                                    </div> 
+                                    <div class="col-sm-3 col-xs-3">
+                                        <a id="10" href="javascript:void(0)" class="mccMonth"></a>
+                                    </div>  
+                                    <div class="col-sm-3 col-xs-3">
+                                        <a id="11" href="javascript:void(0)" class="mccMonth"></a>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-3">
+                                        <a id="12" href="javascript:void(0)" class="mccMonth"></a>
+                                    </div>                        
+                                </div>   
+                            </div>                         
                         </div>
+                        <!-- 月份 E -->
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-8 mcc-item-list">
-                <h4 class="mccTitle" id="ItemList">节目列表</h4>
-                <div class="row " id="Searcher">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">                            
-                            <div class="col-sm-5 col-xs-8" style="margin-left:20px;">
-                                <input type="text" class="form-control" id="itemname" placeholder="请输入搜索的节目">
-                            </div>
-                            <p class="col-sm-1 col-xs-2 btn btn-primary" onclick="searchItem()">搜索</p>
-                        </div>
-                    </form>                 
-                </div>
-                <div class="row" style="margin-left:0px;" id="ItemListTitle">
-                    <div class="col-sm-2 col-xs-6"><strong>节目时间</strong></div>
-                    <!-- <div class="col-sm-1 col-xs-3" style="padding-left:2px;"><strong>收听</strong></div>   
-                    <div class="col-sm-1 col-xs-3" style="padding-left:2px;"><strong>下载</strong></div>-->                                      
-                    <div class="col-sm-5 col-xs-12 text-center"><strong>内容摘要</strong></div>
-                </div>               
-                <div class="row item-title-hr"> <hr style="margin-bottom:5px;margin-top:2px;" /></div>
-                <!-- @* 加载节目动画 begin *@ -->
-                <div class="spinner">
-                    <div class="spinner-container container1">
-                        <div class="circle1"></div>
-                        <div class="circle2"></div>
-                        <div class="circle3"></div>
-                        <div class="circle4"></div>
-                    </div>
-                    <div class="spinner-container container2">
-                        <div class="circle1"></div>
-                        <div class="circle2"></div>
-                        <div class="circle3"></div>
-                        <div class="circle4"></div>
-                    </div>
-                    <div class="spinner-container container3">
-                        <div class="circle1"></div>
-                        <div class="circle2"></div>
-                        <div class="circle3"></div>
-                        <div class="circle4"></div>
-                    </div>
-                </div>
-                <!-- @* 加载节目动画 end *@ -->
-                <div id="ProgramList" class="mccdiv" style="margin-left:10px;"> </div>
             </div>
         </div> 
     </div> 
-    <!-- <nav class="navbar navbar-default navbar-fixed-bottom mccPlayerbackground" id="nav-player">
-        <div class="container">
-            <div id="audio_container" class="">
-                <div>
-                    <audio id="player" data-id="0" data-order="forward" style="width:100%;margin-top:10px;" controls="" src=""></audio>
-                </div>                
-                <p id="player_title" style="color:#ffffff;" >当前节目的内容摘要 </p>  
-                              
-            </div>
-        </div>
-    </nav>   -->
+    <!-- 播放器 S -->
     <div class="audio-box">
 		<div class="audio-container">
 			<div class="audio-cover"></div>
@@ -165,7 +155,7 @@
 						<div class="audio-prev"></div>
 						<div class="audio-play"></div>
 						<div class="audio-next"></div>
-						<div class="audio-menu"></div>
+						<!-- <div class="audio-menu"></div> -->
 						<div class="audio-volume"></div>
 					</div>
 					<div class="audio-set-volume">
@@ -185,22 +175,12 @@
 			</div>
 		</div>
 	</div>
-    
+    <!-- 播放器 E -->    
 </body>
 <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="./JS/audio.js"></script>
 <script src="./JS/manvel.js"></script>
-<!-- <script>
-function playMe(me) {
-        console.log("me:",me);
-        document.getElementById("player_title").innerHTML = me.parentNode.textContent.substring(10,me.parentNode.textContent.length);
-
-        var x = document.getElementById("player");           
-        x.setAttribute("src", me.getAttribute("playurl"));
-        x.play();
-    }
-</script> -->
 <!-- 
 <script type="text/javascript">
     $(function(){

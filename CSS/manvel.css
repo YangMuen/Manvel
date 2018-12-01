@@ -9,7 +9,7 @@ body{
 }
 .mccTitle{       
     background-color: #eee;
-    background-color: rgba(86,61,124,.15);
+    background-color: rgba(0,127,255,.8);
     padding: 8px 10px; 
     border-radius: 3px;
 }
@@ -66,8 +66,13 @@ padding: 7px 7px;
 .mcc-current-year span{
     font-size:16px;
 }
+
 .mcc-monthlist{
-    padding: 10px 65px 23px 20px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+}
+.mcc-monthlist:last-child{
+    margin-bottom: 5px;
 }
 
 .item-title-hr {

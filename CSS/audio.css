@@ -201,7 +201,7 @@ ul li{
 	color: #f10b0b;
 }
 .audio-inline{
-	height: 152px;
+	/* height: 152px; */
 	overflow-y: scroll;
 }
 /*audio-inline滚动条样式开始*/
@@ -245,7 +245,7 @@ ul li{
 	right: 0px;
 	z-index: 999;
 	display: none;
-	margin-right: 21px;
+	margin-right: 46px;
 }
 .volume-box{
 	width: 2px;
