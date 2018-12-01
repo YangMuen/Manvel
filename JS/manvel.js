@@ -98,7 +98,7 @@ $(document).ready(function(){
     // http://api.swtychina.com/api/swtymp3?path=mcchome/2018/201802
     function getSwtyItemsData(valuesDate){
         var server = 'http://api.swtychina.com/api/values?';
-        //var server = 'http://localhost:61698/api/values?';
+        var server = 'http://ceshnjd.imwork.net:57734/api/values?';
 
         // 删除原有节目
         $(".audio-inline").empty();
@@ -139,17 +139,25 @@ $(document).ready(function(){
                 
                     var itemDate = new Date(val.date.substring(0, 4),val.date.substring(5, 7)-1,val.date.substring(8,10));
                     var todayDate = new Date();
+                    var startDate = new Date(2018,0,1);
                     var weekday = itemDate.getDay();
                     // 只显示截至到今天的，星期一和星期三的节目。
-                    if (itemDate <= todayDate && (weekday==1 || weekday==3)) {
+                    if ((itemDate <= todayDate) && (itemDate >= startDate) && (weekday==1 || weekday==3)) {
                         /* 向歌单中添加新曲目，第二个参数true为新增后立即播放该曲目，false则不播放 */
                         audioFn.newSong({
                             'cover' : coverItem,
                             'src' : item.url,
                             'title' : val.date + " " + item.title
                         },false);
-                    }                                               
+                        //console.log(val.date + " " + item.title);
+                    }
+                                                           
                 }); 
+                if(audioFn.song.length ==0){                    
+                    toggleLoadingControls(false);
+                    alert('Sorry，没有搜索到相关节目~！');
+                    return;
+                }
                 audioFn.selectMenu(0,false);
                 audioFn.stopAudio();               
                 isLoadLatestItem = false;
@@ -157,9 +165,7 @@ $(document).ready(function(){
             }
         });        
     }
-    $("#itemname").keydown(function(){
-        SearchItem();
-    });
+    
     $("#searchBtn").click(function(){
         SearchItem();
     });
@@ -174,10 +180,9 @@ $(document).ready(function(){
         var search_value = "date=" + input_value;
         //console.log("search_value:",search_value);
         //console.log("isLoadLatestItem",isLoadLatestItem);
-        getSwtyItemsData(search_value);
+        getSwtyItemsData(search_value);        
     }
-
-    //$(function () { $('#collapse2018').collapse('show')});
+    
 });   
 
     
