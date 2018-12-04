@@ -8,7 +8,7 @@ body{
     overflow-y: auto;
 }
 .mccTitle{       
-    background-color: #eee;
+    /* background-color: #eee; */
     background-color: rgba(0,127,255,.8);
     padding: 8px 10px; 
     border-radius: 3px;

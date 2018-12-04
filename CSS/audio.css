@@ -212,25 +212,24 @@ ul li{
 .audio-inline::-webkit-scrollbar-thumb:hover{background:#45B6F7;border-radius:6px;}
 /*audio-inline滚动条样式结束*/
 .audio-inline li{
-	font-size: 12px;
-	line-height: 2.6;
+	font-size: 14px;
+	line-height: 3.5;
 	padding-left: 8px;
 	padding-right: 8px;
-	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;	
 }
 .audio-inline li:first-child{
-	border-top: 0px solid #ccc;
+	/* border-top: 0px solid #ccc; */
 }
 .audio-inline a{
 	font-size: inherit;
 	color: inherit;
 	text-decoration: none;
-	height: 30px;
+	height: 40px;
 	overflow: hidden;
 	display: block;
 	text-overflow: ellipsis;
-	white-space: nowrap;
-	color: #888;
+	white-space: nowrap;	
 }
 .menu-show,
 .audio-show-volume{
