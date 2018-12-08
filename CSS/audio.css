@@ -231,6 +231,34 @@ ul li{
 	text-overflow: ellipsis;
 	white-space: nowrap;	
 }
+
+ .audio-inline li a:hover{
+    color: red;
+}
+.audio-inline li.active a{
+    color: red;
+}
+/*.audio-inline li a:before{
+    content: "\f105";
+    font-family: fontAwesome;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 16px;
+    display: inline-block;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+    padding-right: 5px;
+    padding-left: 0;
+}
+.audio-inline li a:hover:before{
+    opacity: 1;
+    visibility: visible;
+    padding-left: 10px;
+} */
+
 .menu-show,
 .audio-show-volume{
 	display: block !important;

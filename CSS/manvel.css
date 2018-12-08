@@ -13,6 +13,9 @@ body{
     padding: 8px 10px; 
     border-radius: 3px;
 }
+.itemAchive{
+    cursor: pointer;
+}
 .mccBorder {
     margin-top: 5px;
     /* border: 1px solid #c8c9ca;     */

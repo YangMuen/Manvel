@@ -97,7 +97,7 @@ $(document).ready(function(){
     // ?date=2010-01
     // http://api.swtychina.com/api/swtymp3?path=mcchome/2018/201802
     function getSwtyItemsData(valuesDate){
-        var server = 'http://api.swtychina.com/api/values?';
+        //var server = 'http://api.swtychina.com/api/values?';
         var server = 'http://ceshnjd.imwork.net:57734/api/values?';
 
         // 删除原有节目

@@ -13,7 +13,9 @@
     <div class="container mccBorder"> 
         <div class="row" >
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">                
-                    <h4 class="mccTitle">归档节目</h4> 
+                <h4 class="mccTitle itemAchive" data-toggle="collapse" data-target="#demo">归档节目</h4> 
+                <div id="demo" class="collapse in">
+                    <!-- 搜索 S -->
                     <div id="Searcher">
                         <form class="form-horizontal" role="form" method="post">
                             <div class="form-group">                            
@@ -24,7 +26,8 @@
                             </div>
                         </form>                 
                     </div>
-                    <!-- begin 选择年份  -->
+                    <!-- 搜索 E -->
+                    <!-- 选择年份 S -->
                     <div class="mcc-current-year">
                         <strong><span>选择节目年份：</span></strong>
                         <div class="btn-group">
@@ -37,7 +40,7 @@
                             </ul>
                         </div>
                     </div> 
-                    <!-- end 选择年份  -->           
+                    <!-- 选择年份 E -->           
                     <div class="panel-group" id="accordion">
                         <div class="panel panel-default">
                             <div class="panel-heading mccPanelHeading">
@@ -98,6 +101,7 @@
                             <!-- 月份 E -->
                         </div>
                     </div>
+                </div>                
             </div>            
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mcc-item-list">
                 <h4 class="mccTitle" id="ItemList">节目列表</h4>
