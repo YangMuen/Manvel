@@ -8,10 +8,6 @@ $(document).ready(function(){
             'src' : '',
             'title' : 'sdfas'
         }];
-
-    /* 设置节目列表高度
-        ItemListHeight = Body.heght - navplayer.heght - ItemListTitle.height - Searcher.hegit - ItemList.height
-    */
    InitItemListHeight();
    $(window).resize(function () {
         InitItemListHeight();
@@ -55,7 +51,7 @@ $(document).ready(function(){
         InitAllMonth(nowYear);
         // 获取父亲
         var ulObj = $("#allyear");
-        for(var i=2010;i<=nowYear;i++){
+        for(var i=2018;i<=nowYear;i++){
             ulObj.append("<li value=" + i +"><a>" + i +"年</a></li>");
         }
     }
