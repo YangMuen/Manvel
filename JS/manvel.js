@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    //var imgurl = "http://www.swtychina.com/gb/images/download16.gif"; 
-    //var playerImgUrl = "http://swtychina.com/gb/images/ting.gif";
+    var itemStartTime = 2018;
+    var noItemPrompt = "你提供的关键字太罕见了，没有相关节目，再试试别的~？";
     var coverItem = "images/cover.jpg";
     var song = [
         {
@@ -8,10 +8,8 @@ $(document).ready(function(){
             'src' : '',
             'title' : 'sdfas'
         }];
-   InitItemListHeight();
-   $(window).resize(function () {
-        InitItemListHeight();
-    });
+   //InitItemListHeight();
+
    InitAllYear();
     
     // 创建播放器
@@ -22,7 +20,6 @@ $(document).ready(function(){
     // begin 初次加载节目数据 
     isLoadLatestItem = true;
     getSwtyItemsData();
-    //toggleLoadingControls(false);
     // end 初次加载节目数据
 
     // 为年份列表注册 鼠标点击事件
@@ -39,7 +36,7 @@ $(document).ready(function(){
     $(".mccMonth").click(function(){
         // "date=2018-01"
         var yearmonth = this.text;
-        console.log(yearmonth.substring(0,4) + "-" + yearmonth.substring(4,6));        
+        //console.log(yearmonth.substring(0,4) + "-" + yearmonth.substring(4,6));        
         getSwtyItemsData("date="+yearmonth.substring(0,4) + "-" + yearmonth.substring(4,6));
     });
     // 初始化节目年份下拉菜单，月份列表从2007年开始到现在
@@ -47,11 +44,12 @@ $(document).ready(function(){
         // 设置当前年份
         var nowYear = new Date().getFullYear();
         $("#currentyear").text( nowYear + "年");
+        $(".mccYear").text(nowYear + "年");
         // 更新月份列表
         InitAllMonth(nowYear);
         // 获取父亲
         var ulObj = $("#allyear");
-        for(var i=2018;i<=nowYear;i++){
+        for(var i=itemStartTime;i<=nowYear;i++){
             ulObj.append("<li value=" + i +"><a>" + i +"年</a></li>");
         }
     }
@@ -61,30 +59,46 @@ $(document).ready(function(){
         // 获取 id 为 collapseyear 的标签下的所有 a标签
         //$("#collapseyear").find("a.mccMonth").text(currentyear);
         var aObjs = $("#collapseyear").find("a.mccMonth");
-        var currentMonth = new Date().getMonth();
-        console.log(currentMonth);
-        for(var i = 1; i <= currentMonth+1; i++)
+        var length = aObjs.length;
+        for(i = 0; i < aObjs.length; i++){
+            aObjs[i].text = "";          
+        }
+
+        var currentDate = new Date();
+        var currentMonth = currentDate.getMonth()+1;
+
+        if(currentyear < currentDate.getFullYear()){
+            currentMonth = 12;
+        }
+        
+        //console.log(currentMonth);
+        for(var i = 0; i < currentMonth; i++)
         {
-            var strTemp = currentyear + "0" + i;
-            if(i >= 10){strTemp = currentyear + "" + i;}
-            aObjs[i-1].text = strTemp;
+            var strTemp = currentyear + "0" + (i+1);
+            if(i >= 10){strTemp = currentyear + "" + (i+1);}
+            //setInnerText(aObjs[i-1],strTemp);
+            aObjs[i].text = strTemp;
         }
        
     }
 
-    function InitItemListHeight(){
-        var heightProgramList = $(window).height()-$(".audio-box").outerHeight()-$("#ItemList").outerHeight();
-        $("#ProgramList").height(heightProgramList-83);
-    }
-
+    // function InitItemListHeight(){
+    //     console.log("InitItemListHeight");
+    //     var heightProgramList = $(window).height()-$(".audio-box").outerHeight()-$("#ItemList").outerHeight()-$("#mcchome-nav").outerHeight();
+    //     $("#ProgramList").height(heightProgramList-83);
+    // }
+    // window.onresize = function(){
+    //     console.log("resize");
+    //     InitItemListHeight();
+    // }   
 
     // 控制播放器的显示与隐藏
-    function toggleLoadingControls(loading) {
+    function toggleLoadingControls(loading) {        
         if (loading) {
-            document.querySelector('.spinner').setAttribute('class', "spinner");            
+            $(".spinner").show();            
         }
         else {
-            document.querySelector('.spinner').setAttribute('class', "spinner hidden");
+            $(".spinner").hide();
         }
     }
 
@@ -93,9 +107,8 @@ $(document).ready(function(){
     // ?date=2010-01
     // http://api.swtychina.com/api/swtymp3?path=mcchome/2018/201802
     function getSwtyItemsData(valuesDate){
-        //var server = 'http://api.swtychina.com/api/values?';
-        var server = 'http://ceshnjd.imwork.net:57734/api/values?';
-
+        var server = 'http://api.swtychina.com/api/values?';
+        
         // 删除原有节目
         $(".audio-inline").empty();
 
@@ -112,7 +125,8 @@ $(document).ready(function(){
             },
             success: function(data){    
                 if(data.length == 0){
-                    alert('Sorry，没有搜索到相关节目~！');
+
+                    alert(noItemPrompt);
                     toggleLoadingControls(false);
                 }
 
@@ -165,18 +179,28 @@ $(document).ready(function(){
     $("#searchBtn").click(function(){
         SearchItem();
     });
+    $("#itemname").focus(function(){
+        $("#itemname").keydown(function(event){
+            if(event.which == 13){
+                SearchItem();
+                evt.preventDefault();
+            }
+            
+        });
+        
+    });
     function SearchItem(){
         //isLoadLatestItem = true;           
         var input_value = document.getElementById("itemname").value;
         if (input_value.length == 0) {
             alert("请输入搜素关键字~！");
-            return;
+            return ;
         }
        
         var search_value = "date=" + input_value;
         //console.log("search_value:",search_value);
         //console.log("isLoadLatestItem",isLoadLatestItem);
-        getSwtyItemsData(search_value);        
+        getSwtyItemsData(search_value);              
     }
     
 });   

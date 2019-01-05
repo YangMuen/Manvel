@@ -1,6 +1,18 @@
 body{
     margin-bottom: 100px;
+    margin-top:55px;
 } 
+
+.mcchome-logo{
+    height: 55px;
+}
+.navbar-right{
+    margin-right: 0px;
+}
+.navbar-default .navbar-nav>li>a{
+    color: rgba(57,196,254,1);    
+    font-size: 18px;
+}
 .mccdiv {
     width:100%;   
     overflow: scroll;
@@ -12,13 +24,21 @@ body{
     background-color: rgba(0,127,255,.8);
     padding: 8px 10px; 
     border-radius: 3px;
+    margin-bottom: 0px;
 }
-.itemAchive{
+.mccTitle span{
+    padding-left: 10px;
+    color: #FDFD1C;
+    font-size:12px;
+}
+.itemAchive{   
     cursor: pointer;
 }
-.mccBorder {
-    margin-top: 5px;
-    /* border: 1px solid #c8c9ca;     */
+#Searcher{
+    margin-top:10px;
+}
+#ProgramList{
+    margin-top:10px;
 }
 .mccYear{
     font-size: 17px;
