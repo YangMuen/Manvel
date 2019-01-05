@@ -234,6 +234,9 @@
 			}
 			// 为所有节目注册点击事件 
 			inline.find(">li").unbind('click').on('click',function(){
+				//console.log(this);
+				inline.find(">li").removeClass("active");
+				$(this).addClass("active");
 				// index 无参数 Query对象集合中第一个元素相对于其同辈元素的位置。
 				_this.selectMenu($(this).index(),true);
 			});

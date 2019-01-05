@@ -1,6 +1,7 @@
 $(document).ready(function(){
     var itemStartTime = 2018;
     var noItemPrompt = "你提供的关键字太罕见了，没有相关节目，再试试别的~？";
+    var seachPrompt = "请输入搜素关键字";
     var coverItem = "images/cover.jpg";
     var song = [
         {
@@ -35,8 +36,7 @@ $(document).ready(function(){
     // 为月份注册点击事件
     $(".mccMonth").click(function(){
         // "date=2018-01"
-        var yearmonth = this.text;
-        //console.log(yearmonth.substring(0,4) + "-" + yearmonth.substring(4,6));        
+        var yearmonth = this.text;         
         getSwtyItemsData("date="+yearmonth.substring(0,4) + "-" + yearmonth.substring(4,6));
     });
     // 初始化节目年份下拉菜单，月份列表从2007年开始到现在
@@ -57,7 +57,6 @@ $(document).ready(function(){
     // 更新月份列表
     function InitAllMonth(currentyear){
         // 获取 id 为 collapseyear 的标签下的所有 a标签
-        //$("#collapseyear").find("a.mccMonth").text(currentyear);
         var aObjs = $("#collapseyear").find("a.mccMonth");
         var length = aObjs.length;
         for(i = 0; i < aObjs.length; i++){
@@ -71,27 +70,17 @@ $(document).ready(function(){
             currentMonth = 12;
         }
         
-        //console.log(currentMonth);
         for(var i = 0; i < currentMonth; i++)
         {
             var strTemp = currentyear + "0" + (i+1);
-            if(i >= 10){strTemp = currentyear + "" + (i+1);}
-            //setInnerText(aObjs[i-1],strTemp);
+            if(i+1 > 9){strTemp = currentyear + "" + (i+1);}           
             aObjs[i].text = strTemp;
-        }
-       
+        }       
     }
 
-    // function InitItemListHeight(){
-    //     console.log("InitItemListHeight");
-    //     var heightProgramList = $(window).height()-$(".audio-box").outerHeight()-$("#ItemList").outerHeight()-$("#mcchome-nav").outerHeight();
-    //     $("#ProgramList").height(heightProgramList-83);
-    // }
-    // window.onresize = function(){
-    //     console.log("resize");
-    //     InitItemListHeight();
-    // }   
-
+    function showNoItemPrompt(isshow){ 
+        isshow ? $(".noitemprompt").show().text(noItemPrompt) : $(".noitemprompt").hide();
+    }
     // 控制播放器的显示与隐藏
     function toggleLoadingControls(loading) {        
         if (loading) {
@@ -114,6 +103,7 @@ $(document).ready(function(){
 
         // 控制spinner是否显示
         toggleLoadingControls(true);
+        showNoItemPrompt(false);
         $.ajax({
             url: server + valuesDate,
             type: 'GET',
@@ -124,11 +114,7 @@ $(document).ready(function(){
                 toggleLoadingControls(false);
             },
             success: function(data){    
-                if(data.length == 0){
-
-                    alert(noItemPrompt);
-                    toggleLoadingControls(false);
-                }
+                toggleLoadingControls(data.length);
 
                 song.splice(0,song.length);            
                 var parent = document.getElementById("ProgramList");
@@ -158,20 +144,23 @@ $(document).ready(function(){
                             'cover' : coverItem,
                             'src' : item.url,
                             'title' : val.date + " " + item.title
-                        },false);
-                        //console.log(val.date + " " + item.title);
+                        },false);                        
                     }
                                                            
                 }); 
+                showNoItemPrompt(!audioFn.song.length); 
                 if(audioFn.song.length ==0){                    
                     toggleLoadingControls(false);
-                    alert('Sorry，没有搜索到相关节目~！');
                     return;
                 }
+                
                 audioFn.selectMenu(0,false);
                 audioFn.stopAudio();               
                 isLoadLatestItem = false;
                 toggleLoadingControls(false);
+
+                
+                //console.log(liObjs);
             }
         });        
     }
@@ -179,27 +168,24 @@ $(document).ready(function(){
     $("#searchBtn").click(function(){
         SearchItem();
     });
+    
     $("#itemname").focus(function(){
         $("#itemname").keydown(function(event){
             if(event.which == 13){
                 SearchItem();
-                evt.preventDefault();
-            }
-            
+                event.preventDefault();
+            }            
         });
         
     });
     function SearchItem(){
-        //isLoadLatestItem = true;           
-        var input_value = document.getElementById("itemname").value;
-        if (input_value.length == 0) {
-            alert("请输入搜素关键字~！");
+        var itemnameObj =  $("#itemname");        
+        var input_value = itemnameObj.val();        
+        if ($("#itemname").val().length == 0 ) {
             return ;
         }
        
         var search_value = "date=" + input_value;
-        //console.log("search_value:",search_value);
-        //console.log("isLoadLatestItem",isLoadLatestItem);
         getSwtyItemsData(search_value);              
     }
     
