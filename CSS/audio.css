@@ -218,9 +218,6 @@ ul li{
 	padding-right: 8px;
 	border-bottom: 1px solid #ccc;	
 }
-.audio-inline li:first-child{
-	/* border-top: 0px solid #ccc; */
-}
 .audio-inline a{
 	font-size: inherit;
 	color: inherit;
